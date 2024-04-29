@@ -7,11 +7,14 @@ import TXticon from '/src/assets/img/icons/pdf-icon-02.svg';
 import csvicon from '/src/assets/img/icons/pdf-icon-03.svg';
 import Excelicon from '/src/assets/img/icons/pdf-icon-04.svg';
 import Form from './Form';
+import View from './View';
 
 const Table = () => {
 
     const [formvisible,setFormvisible]=useState(false)
     const [tablevisible,setTablevisible]=useState(true)
+    const [viewVisible,setViewVisible]=useState(false)
+    const [btnVisible,setBtnVisible]=useState(false)
 
     
 
@@ -19,6 +22,7 @@ const Table = () => {
         try {
             setFormvisible(true)
             setTablevisible(false)
+            setBtnVisible(true)
         } catch (error) {
             console.log(error);
         }
@@ -27,13 +31,24 @@ const Table = () => {
         try {
             setFormvisible(false)
             setTablevisible(true)
+            setBtnVisible(false)
+            setViewVisible(false)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    const handleview=()=>{
+        try {
+            setViewVisible(true)
+            setTablevisible(false)
+            setBtnVisible(true)
         } catch (error) {
             console.log(error);
         }
     }
   return (
     <div>
-           { formvisible &&<button
+           { btnVisible &&<button
             className="btn btn-primary submit-form mb-3  "
             onClick={handleclicktable}
           >
@@ -58,14 +73,7 @@ const Table = () => {
                               </a>
                             </form>
                           </div>
-                          <div className="add-group">
-                            <a  className="btn btn-primary add-pluss ms-2" onClick={()=>handlesubmit()}>
-                              <img src={addicon} alt="" />
-                            </a>
-                            {/* <a href="javascript:;" className="btn btn-primary doctor-refresh ms-2">
-                              <img src={refreshicon} alt="" />
-                            </a> */}
-                          </div>
+                         
                           <a type='button' className=" me-2" >
                         {/* <img src={pdficon} alt="" /> */}
                         <input
@@ -88,9 +96,18 @@ const Table = () => {
                       <button className=" btn btn-primary submit-form m-3" >
                           Submit
                       </button>
-                      <a href="javascript;">
+                      <a >
                         <img src={Excelicon} alt="" />
                       </a>
+                      <div className="add-grosup">
+                      {/* <a  className="btn btn-primary add-pluss ms-5" onClick={()=>handlesubmit()}>
+                              <img src={addicon} alt="" />Add Invoice
+                            </a> */}
+                            <button className=" btn btn-success  m-3" onClick={()=>handlesubmit()}>
+                          Add Invoice
+                      </button>
+                            </div>
+                      
                         </div>
                       </div>
                     </div>
@@ -166,7 +183,7 @@ const Table = () => {
                               </a>
                               <a
                                 className="dropdown-item"
-                               
+                               onClick={handleview}
                               >
                                 <i className="fa fa-eye m-r-5"></i> View
                               </a>
@@ -211,7 +228,7 @@ const Table = () => {
                               </a>
                               <a
                                 className="dropdown-item"
-                               
+                                onClick={handleview}
                               >
                                 <i className="fa fa-eye m-r-5"></i> View
                               </a>
@@ -256,7 +273,7 @@ const Table = () => {
                               </a>
                               <a
                                 className="dropdown-item"
-                               
+                                onClick={handleview}
                               >
                                 <i className="fa fa-eye m-r-5"></i> View
                               </a>
@@ -264,96 +281,7 @@ const Table = () => {
                           </div>
                         </td>
                     </tr>
-                    <tr>
-                    <td>1</td>
-                    <td>T01</td>
-                    <td>Goods</td>
-                    <td>202356</td>
-                    <td>Lorem ipsum Lorem ipsum </td>
-                    <td>01</td>
-                    <td>15</td>
-                    <td>15</td>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>14</td>
-                    <td className="text-end">
-                          <div className="dropdown dropdown-action">
-                            <a
-                              href="#"
-                              className="action-icon dropdown-toggle"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              <i className="fa fa-ellipsis-v"></i>
-                            </a>
-                            <div className="dropdown-menu dropdown-menu-end">
-                            
-                              <a className="dropdown-item" 
-                                >
-                                <i className="fa-solid fa-pen-to-square m-r-5"></i> Edit
-                              </a>
-                              <a
-                                className="dropdown-item"
-                                data-bs-toggle="modal"
-                                data-bs-target="#delete_patient"
-                              >
-                                <i className="fa fa-trash-alt m-r-5"></i> Delete
-                              </a>
-                              <a
-                                className="dropdown-item"
-                               
-                              >
-                                <i className="fa fa-eye m-r-5"></i> View
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                    </tr>
-                    <tr>
-                    <td>1</td>
-                    <td>T01</td>
-                    <td>Goods</td>
-                    <td>202356</td>
-                    <td>Lorem ipsum Lorem ipsum </td>
-                    <td>01</td>
-                    <td>15</td>
-                    <td>15</td>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>14</td>
-                    <td className="text-end">
-                          <div className="dropdown dropdown-action">
-                            <a
-                              href="#"
-                              className="action-icon dropdown-toggle"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              <i className="fa fa-ellipsis-v"></i>
-                            </a>
-                            <div className="dropdown-menu dropdown-menu-end">
-                            
-                              <a className="dropdown-item" 
-                                >
-                                <i className="fa-solid fa-pen-to-square m-r-5"></i> Edit
-                              </a>
-                              <a
-                                className="dropdown-item"
-                                data-bs-toggle="modal"
-                                data-bs-target="#delete_patient"
-                              >
-                                <i className="fa fa-trash-alt m-r-5"></i> Delete
-                              </a>
-                              <a
-                                className="dropdown-item"
-                               
-                              >
-                                <i className="fa fa-eye m-r-5"></i> View
-                              </a>
-                            </div>
-                          </div>
-                        </td>
-                    </tr>
+                    
                   </tbody>
                 </table>
               </div>
@@ -362,6 +290,7 @@ const Table = () => {
       </div>}
 
       {formvisible && <Form/>}
+      {viewVisible && <View/>}
     </div>
   )
 }
